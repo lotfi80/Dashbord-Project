@@ -58,7 +58,9 @@ export default function MiniDrawer() {
         <SideBar open={open} handleDrawerClose={handleDrawerClose} />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <DrawerHeader />
-          <Typography sx={{ marginBottom: 2 }}>Lotfi Slim</Typography>
+          <Typography sx={{ marginBottom: 2 }}>
+            <h1>Lotfi Slim</h1>
+          </Typography>
         </Box>
       </Box>
     </ThemeProvider>
