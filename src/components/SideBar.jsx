@@ -67,6 +67,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
+const Array1 = ["Inbox", "Starred", "Send email", "Drafts"];
+
+// const Array2 = ["All mail", "Trash", "Spam"];
 
 const SideBar = ({ open, handleDrawerClose }) => {
   const theme = useTheme();
@@ -83,7 +86,7 @@ const SideBar = ({ open, handleDrawerClose }) => {
       </DrawerHeader>
       <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+        {Array1.map((text, index) => (
           <ListItem key={text} disablePadding sx={{ display: "block" }}>
             <ListItemButton
               sx={[
@@ -187,6 +190,7 @@ const SideBar = ({ open, handleDrawerClose }) => {
         ))}
       </List>
       <Divider />
+
       <List>
         {["All mail", "Trash", "Spam"].map((text, index) => (
           <ListItem key={text} disablePadding sx={{ display: "block" }}>
