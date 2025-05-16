@@ -1,0 +1,85 @@
+// export const rows = [
+//   { id: 1, column1: "hello", column2: "hello" },
+//   { id: 2, column1: "DataGridPro", column2: "hello" },
+//   { id: 3, column1: "Mui", column2: "hello" },
+//   { id: 4, column1: "Mui", column2: "hello" },
+//   { id: 5, column1: "Mui", column2: "hello" },
+//   { id: 6, column1: "Mui", column2: "hello" },
+
+// import { alignContent } from "@mui/system";
+
+// ];
+export const rows = [
+  {
+    id: 1,
+    name: "Lotfi",
+    email: "lotfi@hotmail.com",
+    age: 46,
+    phone: "123456789",
+    acces: "admin",
+  },
+  {
+    id: 2,
+    name: "Ali",
+    email: "lotfi@hotmail.com",
+    age: 45,
+    phone: "123456789",
+    acces: "admin",
+  },
+  {
+    id: 3,
+    name: "Isabelle",
+    email: "lotfi@hotmail.com",
+    age: 56,
+    phone: "123456789",
+    acces: "manager",
+  },
+  {
+    id: 4,
+    name: "Najet",
+    email: "lotfi@hotmail.com",
+    age: 79,
+    phone: "123456789",
+    acces: "manager",
+  },
+  {
+    id: 5,
+    name: "Claude",
+    email: "lotfi@hotmail.com",
+    age: 81,
+    phone: "123456789",
+    acces: "manager",
+  },
+  {
+    id: 6,
+    name: "Nico",
+    email: "lotfi@hotmail.com",
+    age: 81,
+    phone: "123456789",
+    acces: "user",
+  },
+  {
+    id: 7,
+    name: "Christine",
+    email: "lotfi@hotmail.com",
+    age: 80,
+    phone: "123456789",
+    acces: "user",
+  },
+  {
+    id: 8,
+    name: "Philippe",
+    email: "Philippe@hotmail.com",
+    age: 55,
+    phone: "123456789",
+    acces: "user",
+  },
+  {
+    id: 9,
+    name: "Gaytan",
+    email: "Gaytan@hotmail.com",
+    age: 55,
+    phone: "123456789",
+    acces: "user",
+  },
+];

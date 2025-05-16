@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 
 import TopBar from "./components/TopBar";
 import { getDesignsTockens } from "./theme";
+import { Outlet } from "react-router-dom";
 
 // const drawerWidth = 240;
 
@@ -58,9 +59,7 @@ export default function MiniDrawer() {
         <SideBar open={open} handleDrawerClose={handleDrawerClose} />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <DrawerHeader />
-          <Typography sx={{ marginBottom: 2 }}>
-            <h1>Lotfi Slim</h1>
-          </Typography>
+          <Outlet />
         </Box>
       </Box>
     </ThemeProvider>

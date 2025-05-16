@@ -12,6 +12,22 @@ import MailIcon from "@mui/icons-material/Mail";
 import List from "@mui/material/List";
 import { styled, useTheme } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
+import {
+  BarChartOutlined,
+  CalendarTodayOutlined,
+  ContactsOutlined,
+  HelpOutlineOutlined,
+  HomeOutlined,
+  MapOutlined,
+  PeopleOutlined,
+  PersonOutlined,
+  PieChartOutlineOutlined,
+  ReceiptOutlined,
+  TimelineOutlined,
+} from "@mui/icons-material";
+import { Avatar, Typography } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
+import { grey } from "@mui/material/colors";
 
 const drawerWidth = 240;
 
@@ -67,11 +83,74 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
-const Array1 = ["Inbox", "Starred", "Send email", "Drafts"];
+const Array1 = [
+  {
+    text: "Dashbord",
+    icon: <HomeOutlined />,
+    path: "./dashbord",
+  },
+  {
+    text: "Manage team",
+    icon: <PeopleOutlined />,
+    path: "./team",
+  },
+  {
+    text: "Contacts Informations",
+    icon: <ContactsOutlined />,
+    path: "./contacts",
+  },
+  {
+    text: "Invoices balances",
+    icon: <ReceiptOutlined />,
+    path: "./invoices",
+  },
+];
+const Array2 = [
+  {
+    text: "Profile form",
+    icon: <PersonOutlined />,
+    path: "./form",
+  },
+  {
+    text: "Calendar",
+    icon: <CalendarTodayOutlined />,
+    path: "./calendar",
+  },
+  {
+    text: "FAQ page team",
+    icon: <HelpOutlineOutlined />,
+    path: "./faq",
+  },
+];
+const Array3 = [
+  {
+    text: "Bar Chart",
+    icon: <BarChartOutlined />,
+    path: "./bar",
+  },
+  {
+    text: "Pie Chart",
+    icon: <PieChartOutlineOutlined />,
+    path: "./pie",
+  },
+  {
+    text: "Line Chart",
+    icon: <TimelineOutlined />,
+    path: "./line",
+  },
+  {
+    text: "Geography Chart",
+    icon: <MapOutlined />,
+    path: "./geography",
+  },
+];
 
 // const Array2 = ["All mail", "Trash", "Spam"];
 
 const SideBar = ({ open, handleDrawerClose }) => {
+  let location = useLocation();
+
+  const navigate = useNavigate();
   const theme = useTheme();
   return (
     <Drawer variant="permanent" open={open}>
@@ -85,14 +164,47 @@ const SideBar = ({ open, handleDrawerClose }) => {
         </IconButton>
       </DrawerHeader>
       <Divider />
+      <Avatar
+        sx={{
+          mx: "auto",
+          width: open ? 88 : 44,
+          height: open ? 88 : 44,
+          mt: 1,
+          border: "2px solid grey",
+          transition: " 0.25s ",
+        }}
+        alt="Remy Sharp"
+        src="..//../public/eigenesbild.png"
+      />
+      <Typography align="center" sx={{ fontSize: open ? 20 : 0 }}>
+        Lotfi Slim
+      </Typography>
+      <Typography
+        align="center"
+        sx={{ fontSize: open ? 15 : 0, color: theme.palette.info.main }}
+      >
+        Admin
+      </Typography>
+
+      <Divider />
       <List>
-        {Array1.map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
+        {Array1.map((item) => (
+          <ListItem key={item.path} disablePadding sx={{ display: "block" }}>
             <ListItemButton
+              onClick={() => {
+                navigate(item.path);
+              }}
               sx={[
                 {
                   minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
                   px: 2.5,
+                  bgcolor:
+                    location.pathname === item.path
+                      ? theme.palette.mode === "dark"
+                        ? grey[800]
+                        : grey[300]
+                      : null,
                 },
                 open
                   ? {
@@ -118,10 +230,10 @@ const SideBar = ({ open, handleDrawerClose }) => {
                       },
                 ]}
               >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {item.icon}
               </ListItemIcon>
               <ListItemText
-                primary={text}
+                primary={item.text}
                 sx={[
                   open
                     ? {
@@ -137,11 +249,13 @@ const SideBar = ({ open, handleDrawerClose }) => {
         ))}
       </List>
       <Divider />
-
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
+        {Array2.map((item) => (
+          <ListItem key={item.path} disablePadding sx={{ display: "block" }}>
             <ListItemButton
+              onClick={() => {
+                navigate(item.path);
+              }}
               sx={[
                 {
                   minHeight: 48,
@@ -171,10 +285,10 @@ const SideBar = ({ open, handleDrawerClose }) => {
                       },
                 ]}
               >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {item.icon}
               </ListItemIcon>
               <ListItemText
-                primary={text}
+                primary={item.text}
                 sx={[
                   open
                     ? {
@@ -189,12 +303,16 @@ const SideBar = ({ open, handleDrawerClose }) => {
           </ListItem>
         ))}
       </List>
+
       <Divider />
 
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
+        {Array3.map((item) => (
+          <ListItem key={item.path} disablePadding sx={{ display: "block" }}>
             <ListItemButton
+              onClick={() => {
+                navigate(item.path);
+              }}
               sx={[
                 {
                   minHeight: 48,
@@ -224,10 +342,10 @@ const SideBar = ({ open, handleDrawerClose }) => {
                       },
                 ]}
               >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {item.icon}
               </ListItemIcon>
               <ListItemText
-                primary={text}
+                primary={item.text}
                 sx={[
                   open
                     ? {
