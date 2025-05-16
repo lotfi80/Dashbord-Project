@@ -1,12 +1,16 @@
-# React + Vite
+# #### React Admin Dashbord
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- - - npm install to set up the project and install the required modules/packages.
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+      in index.css body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      }
 
-Currently, two official plugins are available:
+- - - installed Material-UI Icons (@mui/icons-material) and imported icons for your React Admin Dashboard.
+- - - installed React Router DOM (react-router-dom) for navigation in the Admin Dashboard
+- - - Implemented the /dashboard route by creating a dedicated component and integrating it into the router configuration. Navigation is handled via React Router’s Link and Outlet system.
+- - - Added a responsive mini variant drawer using Material UI. The sidebar toggles between collapsed and expanded states, featuring icons and labels for navigation. Integrated with the app layout using MUI’s <Box> and <CssBaseline>.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- - - Material Ui https://mui.com/material-ui/customization/default-theme/ customization von material UI für dark mode set up

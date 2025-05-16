@@ -1,11 +1,24 @@
 import React from "react";
-import { Toolbar, Typography, IconButton, styled } from "@mui/material";
+import {
+  Toolbar,
+  Typography,
+  IconButton,
+  styled,
+  Stack,
+  Box,
+  useTheme,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import MuiAppBar from "@mui/material/AppBar";
 import { alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
-
+import { Delete } from "@mui/icons-material";
+import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 const drawerWidth = 240;
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -67,7 +80,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
-const TopBar = ({ open, handleDrawerOpen }) => {
+const TopBar = ({ open, handleDrawerOpen, setMode }) => {
+  const theme = useTheme();
   return (
     <AppBar position="fixed" open={open}>
       <Toolbar>
@@ -94,6 +108,53 @@ const TopBar = ({ open, handleDrawerOpen }) => {
             inputProps={{ "aria-label": "search" }}
           />
         </Search>
+        <Box flexGrow={1} />
+
+        <Stack direction="row" spacing={2} sx={{ marginLeft: "auto" }}>
+          {theme.palette.mode === "light" ? (
+            <IconButton
+              onClick={() => {
+                localStorage.setItem(
+                  "currentMode",
+                  theme.palette.mode === "dark" ? "light" : "dark"
+                );
+                setMode((prevMode) =>
+                  prevMode === "light" ? "dark" : "light"
+                );
+              }}
+              color="inherit"
+              aria-label="delete"
+            >
+              <LightModeOutlinedIcon />
+            </IconButton>
+          ) : (
+            <IconButton
+              onClick={() => {
+                localStorage.setItem(
+                  "currentMode",
+                  theme.palette.mode === "dark" ? "light" : "dark"
+                );
+                setMode((prevMode) =>
+                  prevMode === "light" ? "dark" : "light"
+                );
+              }}
+              color="inherit"
+              aria-label="delete"
+            >
+              <DarkModeOutlinedIcon />
+            </IconButton>
+          )}
+
+          <IconButton color="inherit" aria-label="delete">
+            <NotificationsNoneOutlinedIcon />
+          </IconButton>
+          <IconButton color="inherit" aria-label="delete">
+            <SettingsOutlinedIcon />
+          </IconButton>
+          <IconButton color="inherit" aria-label="delete">
+            <Person2OutlinedIcon />
+          </IconButton>
+        </Stack>
       </Toolbar>
     </AppBar>
   );

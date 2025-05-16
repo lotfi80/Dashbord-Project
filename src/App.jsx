@@ -5,7 +5,7 @@
 // export default App;
 
 import * as React from "react";
-import { styled } from "@mui/material/styles";
+import { createTheme, styled, ThemeProvider } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import SideBar from "./components/SideBar";
 
@@ -13,6 +13,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 
 import TopBar from "./components/TopBar";
+import { getDesignsTockens } from "./theme";
 
 // const drawerWidth = 240;
 
@@ -35,16 +36,31 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const [mode, setMode] = React.useState(
+    localStorage.getItem("currentMode")
+      ? localStorage.getItem("currentMode")
+      : "light"
+  );
+  const theme = React.useMemo(
+    () => createTheme(getDesignsTockens(mode)),
+    [mode]
+  );
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <TopBar open={open} handleDrawerOpen={handleDrawerOpen} />
-      <SideBar open={open} handleDrawerClose={handleDrawerClose} />
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        <Typography sx={{ marginBottom: 2 }}>Lorem ipsum</Typography>
+    <ThemeProvider theme={theme}>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <TopBar
+          open={open}
+          handleDrawerOpen={handleDrawerOpen}
+          setMode={setMode}
+        />
+        <SideBar open={open} handleDrawerClose={handleDrawerClose} />
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <DrawerHeader />
+          <Typography sx={{ marginBottom: 2 }}>Lotfi Slim</Typography>
+        </Box>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 }
