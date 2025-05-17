@@ -14,3 +14,7 @@
 - - - Added a responsive mini variant drawer using Material UI. The sidebar toggles between collapsed and expanded states, featuring icons and labels for navigation. Integrated with the app layout using MUI’s <Box> and <CssBaseline>.
 
 - - - Material Ui https://mui.com/material-ui/customization/default-theme/ customization von material UI für dark mode set up
+
+* - - React hook form for the validation using, submit button of the form
+
+- - - Full calendar für calendar

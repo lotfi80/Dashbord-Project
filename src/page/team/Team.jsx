@@ -2,7 +2,13 @@ import { DataGrid } from "@mui/x-data-grid";
 import React from "react";
 import { rows } from "./data";
 import { useTheme } from "@mui/material";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import {
+  AdminPanelSettingsOutlined,
+  LockOpenOutlined,
+  SecurityOutlined,
+} from "@mui/icons-material";
 
 const Team = () => {
   const theme = useTheme();
@@ -26,7 +32,7 @@ const Team = () => {
       field: "email",
       headerName: "Email",
       width: 200,
-      flex: 1,
+
       align: "center",
       headerAlign: "center",
     },
@@ -47,22 +53,46 @@ const Team = () => {
     {
       field: "acces",
       headerName: "Acces",
-      width: 300,
+      width: 200,
       align: "center",
       headerAlign: "center",
       renderCell: ({ row: { acces } }) => {
         return (
           <Box
             sx={{
-              bgcolor: theme.palette.primary.dark,
+              backgroundColor:
+                acces === "admin"
+                  ? theme.palette.primary.dark
+                  : acces === "manager"
+                  ? theme.palette.secondary.dark
+                  : "#3da58a",
               p: "5px",
               width: "99px",
               borderRadius: "5px",
               textAlign: "center",
+              display: "flex",
+              justifyContent: "space-evenly",
               color: theme.palette.primary.contrastText,
             }}
           >
-            <Typography variant="body1">{acces}</Typography>
+            {acces === "admin" && (
+              <AdminPanelSettingsOutlined
+                fontSize="small"
+                sx={{ align: "#center" }}
+              />
+            )}
+            {acces === "manager" && (
+              <SecurityOutlined sx={{ color: "#fff" }} fontSize="small" />
+            )}
+            {acces === "user" && (
+              <LockOpenOutlined sx={{ color: "#fff" }} fontSize="small" />
+            )}
+            <Typography
+              sx={{ fontSize: "13px", color: "#fff" }}
+              variant="body1"
+            >
+              {acces}
+            </Typography>
           </Box>
         );
       },
@@ -70,15 +100,13 @@ const Team = () => {
   ];
 
   return (
-    <div>
-      <div style={{ height: 600, width: "100%" }}>
-        <DataGrid
-          rows={rows}
-          // @ts-ignore
-          columns={columns}
-        />
-      </div>
-    </div>
+    <Box sx={{ height: 600, width: "98%", mx: "auto" }}>
+      <DataGrid
+        rows={rows}
+        // @ts-ignore
+        columns={columns}
+      />
+    </Box>
   );
 };
 

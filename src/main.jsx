@@ -15,7 +15,7 @@ import Team from "./page/team/Team";
 import Contacts from "./page/contacts/Contacts";
 import Invoices from "./page/invoices/Invoices";
 import Form from "./page/form/Form";
-import Calender from "./page/calender/Calender";
+import Calendar from "./page/calender/Calendar";
 import Faq from "./page/faq/Faq";
 import BarChart from "./page/barChart/BarChart";
 import LineChart from "./page/lineChart/LineChart";
@@ -30,7 +30,7 @@ const router = createBrowserRouter(
       <Route path="contacts" element={<Contacts />} />
       <Route path="invoices" element={<Invoices />} />
       <Route path="form" element={<Form />} />
-      <Route path="Calendar" element={<Calender />} />
+      <Route path="Calendar" element={<Calendar />} />
       <Route path="faq" element={<Faq />} />
       <Route path="bar" element={<BarChart />} />
       <Route path="line" element={<LineChart />} />
